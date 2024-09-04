@@ -64,4 +64,9 @@ The reason why grep "pseudogene" genes.gtf wouldn't work to identify just the ps
 `grep "gene_type \".*pseudogene\"; gene_name" genes.gtf | less -S`
 The backslashes are to make sure that the quotations are taken as part of the string. Including gene_type in the beginning ensures that only instances where "pseudogene" appears in the gene_type category are selected. .* is used to search for 0+ characters (rather that 1+ with just *) in between the quotation mark and "pseudogene."
 
+## Q3
+Given already:
+`sed "s/ /\t/g" gene.gtf > gene-tabs.gtf`
 
+Code to only print the chromosome, start, stop, and gene_name
+cut -f 1, 4, 5, 14 gene.tabs.gtf > gene-tabs-bed.bed
