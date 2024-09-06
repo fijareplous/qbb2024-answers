@@ -95,4 +95,6 @@ diff_array = sorted[:,-1] - sorted[:,-2]
 #print(numpy.sort(diff_array))
 
 #Part 8:
-#print(len(numpy.sort(diff_array[diff_array > 10])))
+print(len(numpy.sort(diff_array[diff_array > 10])))
+#There are 33 genes where the difference between the highest and second highest tissue expression values
+# is greater than 10 
