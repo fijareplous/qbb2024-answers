@@ -49,16 +49,26 @@ the chances of the two variables being independent and producing similar results
 is extremely small (thus being statistically significant). The chart of the data
 shows a correlation between the two variables, although there is less than I 
 would expect for such a low p value. 
+
+Additionally, the slope of the trendline is 0.378, which suggests that the number 
+of maternal dnms increases slightly with maternal age (very roughly by 1 dnm every
+3 years, or .378 per year). This increase with age, while slight, is still 
+statistically significant given the p value. 
 '
 
 #Part 2.3
 father_model <- lm(data = joint, formula = n_paternal_dnm ~1 + Father_age)
+father_model
 '
 As with the previous question, The p value for the relationship between maternal 
 age and the number of maternal de novo mutations is <2.2x10^-16, which is extremely
 small, demonstrating that the results are statistically significant. The trends 
 seen in the chart match these results, as paternal age and number of DNM appear
 highly correlated. 
+
+Furthermore, the slope of the trendline 1.35, which suggests that the number of 
+paternal dnms increases by about 1.35 per year. This increase is more substantial
+than seen in maternal dnms, although both are statistically significant.
 '
 
 #Part 2.4
@@ -74,8 +84,17 @@ ggplot(data = joint) + geom_histogram(mapping = aes(x= n_paternal_dnm, fill =
     fill = "Maternal"), alpha = .7) + xlab("De Novo Mutations") + ylab("Number of 
     Probands")
 
-' This was as far as I got on Friday; I tried working on it more after bootcamp 
-ended, but I am pretty lost. As such, I am planning to attend office hours on 
-Monday to ask questions about the setup of part 2.5 and how to approach 2.6. My
-apologies that the last two exercises are incomplete; I will submit them as soon
-as I can.'
+#Part 2.6
+t.test(joint$n_paternal_dnm, joint$n_maternal_dnm, 
+  alternative = "two.sided")
+'
+A two sided t-test would be appropriate given that we want to examine whether 
+there is a statistical difference between the means of the maternally vs paternally
+dnms per proband. Because we are comparing two groups, (not 3+, in the case of 
+ANOVA tests), a t test is appropriate. 
+
+The test produces a p value of >2.2x10^-16, which is extremely small, and sample
+means of 52.02 and 12.7 for paternal and maternal dnms, respectively. This suggests
+that the two groups are statistically different from one another and that those
+differences are unlikely due to chance.
+'
