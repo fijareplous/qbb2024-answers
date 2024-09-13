@@ -47,7 +47,10 @@ df_npj8 %>%
   arrange(desc(SMTSD_n))
 #Whole Blood samples are the most common in individual GTEX-NPJ8
 
-#Opened df_npj8, saw that the SMTSISCH and SMNABTCH numbers are different
+#Opened df_npj8, scrolled to the 15th-20th columns, and saw that the SMGEBTCHT,
+#SMGEBTCH, and SMAFRZE data was different. As such, it appears that a variety of
+#methods were used to obtain the sample sequences, as these columns contain data
+#relevant to sequencing methods. 
 
 nrow(df %>%
   filter( !is.na(SMATSSCR) ) %>%
